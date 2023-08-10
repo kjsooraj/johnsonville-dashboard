@@ -7,13 +7,13 @@ interface IconProps extends React.SVGAttributes<SVGSVGElement> {
   label?: string;
 }
 
-const Icon = forwardRef<SVGSVGElement, IconProps>((props, forwardedRef) => {
+const Icon = forwardRef<SVGSVGElement, IconProps>((props, ref) => {
   const { icon, label, ...rest } = props;
   const IconEle = icons[icon];
 
   return (
     <React.Fragment>
-      <IconEle ref={forwardedRef} {...rest} />
+      <IconEle ref={ref} {...rest} />
       {label && (
         <VisuallyHiddenPrimitive.Root>{label}</VisuallyHiddenPrimitive.Root>
       )}
@@ -23,4 +23,4 @@ const Icon = forwardRef<SVGSVGElement, IconProps>((props, forwardedRef) => {
 
 Icon.displayName = "Icon";
 
-export default Icon;
+export { Icon };

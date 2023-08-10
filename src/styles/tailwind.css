@@ -8,6 +8,11 @@
   }
 
   body {
-    @apply font-sans text-base font-normal leading-normal antialiased;
+    @apply bg-neutral-950 text-sm font-normal leading-normal text-neutral-500 antialiased;
+    font-family: "Inter", sans-serif;
+  }
+
+  .container {
+    @apply mx-auto w-full !max-w-screen-2xl;
   }
 }

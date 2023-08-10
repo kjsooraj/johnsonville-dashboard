@@ -1,3 +1,7 @@
 export default function Footer() {
-  return <footer>Footer</footer>;
+  return (
+    <footer className="h-auto w-full">
+      <div className="container px-4">Footer</div>
+    </footer>
+  );
 }

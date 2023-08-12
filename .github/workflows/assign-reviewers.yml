@@ -1,0 +1,30 @@
+name: assign reviewers
+
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  assign-reviewers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git
+        uses: actions/checkout@v2
+
+      - name: assign reviewers
+        run: |
+          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          reviewers=$(grep -E ".* @(.+)" .github/CODEOWNERS | cut -d' ' -f2)
+          for reviewer in $reviewers; do
+            for file in $changed_files; do
+              if grep -q $file .github/CODEOWNERS; then
+                echo "Requesting review from $reviewer for $file"
+                gh pr review create --reviewer=$reviewer --event REQUEST_CHANGES
+                break
+              fi
+            done
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PATH: /usr/bin:/usr/local/bin

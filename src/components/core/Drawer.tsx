@@ -142,7 +142,7 @@ const DrawerContent = React.forwardRef<
             "data-[state=open]:bg-secondary",
           ])}
         >
-          <Icon icon="close" className="w-4 h-4" />
+          <Icon icon="close" className="h-4 w-4" />
           <span className="sr-only">Close</span>
         </DrawerPrimitive.Close>
       </DrawerPrimitive.Content>
@@ -193,7 +193,7 @@ const DrawerTitle = React.forwardRef<
   return (
     <DrawerPrimitive.Title
       ref={ref}
-      className={mergeNames("text-lg font-semibold text-foreground", className)}
+      className={mergeNames("text-foreground text-lg font-semibold", className)}
       {...rest}
     />
   );
@@ -210,7 +210,7 @@ const DrawerDescription = React.forwardRef<
   return (
     <DrawerPrimitive.Description
       ref={ref}
-      className={mergeNames("text-sm text-muted-foreground", className)}
+      className={mergeNames("text-muted-foreground text-sm", className)}
       {...rest}
     />
   );

@@ -5,5 +5,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: ["tailwindcss-animate"],
+  plugins: ["tailwindcss-animate", "prettier-plugin-tailwindcss"],
 };

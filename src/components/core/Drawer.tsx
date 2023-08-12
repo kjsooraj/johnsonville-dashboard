@@ -5,7 +5,9 @@ import { mergeNames } from "@/lib/utils";
 import { Icon } from "@/components/core/Icon";
 
 const Drawer = DrawerPrimitive.Root;
+
 const DrawerTrigger = DrawerPrimitive.Trigger;
+
 const DrawerClose = DrawerPrimitive.Close;
 
 const DrawerPortal = (props: DrawerPrimitive.DialogPortalProps) => {
@@ -99,9 +101,6 @@ const drawerStyles = cva(
           "sm:max-w-sm",
         ],
       },
-    },
-    defaultVariants: {
-      side: "right",
     },
   }
 );

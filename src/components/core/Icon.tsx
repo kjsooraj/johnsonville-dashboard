@@ -9,6 +9,7 @@ interface IconProps extends React.SVGAttributes<SVGSVGElement> {
 
 const Icon = forwardRef<SVGSVGElement, IconProps>((props, ref) => {
   const { icon, label, ...rest } = props;
+
   const IconEle = icons[icon];
 
   return (

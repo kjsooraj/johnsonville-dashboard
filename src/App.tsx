@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { routes } from "@/constants/routes";
 import About from "@/pages/About";
 import Blogs from "@/pages/Blogs";
 import Coaching from "@/pages/Coaching";
@@ -16,14 +17,14 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="services" element={<Services />} />
-        <Route path="training" element={<Training />} />
-        <Route path="coaching" element={<Coaching />} />
-        <Route path="gallery" element={<Gallery />} />
-        <Route path="testimonials" element={<Testimonials />} />
-        <Route path="blogs" element={<Blogs />} />
-        <Route path="contact" element={<Contact />} />
+        <Route path={routes.about} element={<About />} />
+        <Route path={routes.services} element={<Services />} />
+        <Route path={routes.training} element={<Training />} />
+        <Route path={routes.coaching} element={<Coaching />} />
+        <Route path={routes.gallery} element={<Gallery />} />
+        <Route path={routes.testimonials} element={<Testimonials />} />
+        <Route path={routes.blogs} element={<Blogs />} />
+        <Route path={routes.contact} element={<Contact />} />
         <Route path="*" element={<Error />} />
       </Route>
     </Routes>

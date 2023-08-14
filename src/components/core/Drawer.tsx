@@ -8,7 +8,43 @@ const Drawer = DrawerPrimitive.Root;
 
 const DrawerTrigger = DrawerPrimitive.Trigger;
 
-const DrawerClose = DrawerPrimitive.Close;
+const DrawerClose = React.forwardRef<
+  React.ElementRef<typeof DrawerPrimitive.Close>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Close>
+>((props, ref) => {
+  const { className, ...rest } = props;
+
+  return (
+    <DrawerPrimitive.Close
+      ref={ref}
+      className={mergeNames(
+        [
+          "absolute",
+          "right-4",
+          "top-4",
+          "rounded-sm",
+          "opacity-70",
+          "ring-offset-background",
+          "transition-opacity",
+          "hover:opacity-100",
+          "focus:outline-none",
+          "focus:ring-2",
+          "focus:ring-ring",
+          "focus:ring-offset-2",
+          "disabled:pointer-events-none",
+          "data-[state=open]:bg-secondary",
+        ],
+        className
+      )}
+      {...rest}
+    >
+      <Icon icon="close" className="h-4 w-4" />
+      <span className="sr-only">Close</span>
+    </DrawerPrimitive.Close>
+  );
+});
+
+DrawerClose.displayName = DrawerPrimitive.Close.displayName;
 
 const DrawerPortal = (props: DrawerPrimitive.DialogPortalProps) => {
   const { className, ...rest } = props;
@@ -31,7 +67,7 @@ const DrawerOverlay = React.forwardRef<
           "fixed",
           "inset-0",
           "z-50",
-          "bg-background/80",
+          "bg-neutral-800/5",
           "backdrop-blur-sm",
           "data-[state=open]:animate-in",
           "data-[state=closed]:animate-out",
@@ -53,7 +89,7 @@ const drawerStyles = cva(
     "fixed",
     "z-50",
     "gap-4",
-    "bg-background",
+    "bg-neutral-900",
     "p-6",
     "shadow-lg",
     "transition",
@@ -86,19 +122,21 @@ const drawerStyles = cva(
           "h-full",
           "w-3/4",
           "border-r",
+          "border-r-neutral-800",
           "data-[state=closed]:slide-out-to-left",
           "data-[state=open]:slide-in-from-left",
-          "sm:max-w-sm",
+          "sm:max-w-xs",
         ],
         right: [
           "inset-y-0",
           "right-0",
           "h-full",
-          "w-3/4 ",
+          "w-3/4",
           "border-l",
+          "border-l-neutral-800",
           "data-[state=closed]:slide-out-to-right",
           "data-[state=open]:slide-in-from-right",
-          "sm:max-w-sm",
+          "sm:max-w-xs",
         ],
       },
     },
@@ -124,27 +162,7 @@ const DrawerContent = React.forwardRef<
         {...rest}
       >
         {children}
-        <DrawerPrimitive.Close
-          className={mergeNames([
-            "absolute",
-            "right-4",
-            "top-4",
-            "rounded-sm",
-            "opacity-70",
-            "ring-offset-background",
-            "transition-opacity",
-            "hover:opacity-100",
-            "focus:outline-none",
-            "focus:ring-2",
-            "focus:ring-ring",
-            "focus:ring-offset-2",
-            "disabled:pointer-events-none",
-            "data-[state=open]:bg-secondary",
-          ])}
-        >
-          <Icon icon="close" className="h-4 w-4" />
-          <span className="sr-only">Close</span>
-        </DrawerPrimitive.Close>
+        <DrawerClose />
       </DrawerPrimitive.Content>
     </DrawerPortal>
   );
@@ -221,7 +239,6 @@ DrawerDescription.displayName = DrawerPrimitive.Description.displayName;
 export {
   Drawer,
   DrawerTrigger,
-  DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerFooter,

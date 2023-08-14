@@ -3,12 +3,44 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --cl-primary: 15, 15, 15;
+    --cl-primary-light: 23, 23, 23;
+    --cl-primary-dark: 24, 24, 24;
+    --cl-primary-contrast: 15, 15, 15;
+    --cl-secondary: 163, 163, 163;
+    --cl-secondary-light: 115, 115, 115;
+    --cl-secondary-dark: 245, 245, 245;
+    --cl-divider: 28, 28, 30;
+    --cl-divider-light: 24, 24, 24;
+    --cl-divider-dark: 50, 50, 50;
+    --cl-error: 28, 25, 23;
+    --cl-tooltip: 245, 245, 245;
+    --cl-popover: 15, 15, 15;
+    --cl-success: 16, 185, 129;
+    --cl-success-light: 52, 211, 153;
+    --cl-success-dark: 5, 150, 105;
+    --cl-danger: 239, 68, 68;
+    --cl-danger-light: 248, 113, 113;
+    --cl-danger-dark: 220, 38, 38;
+    --cl-info: 59, 130, 246;
+    --cl-info-light: 96, 165, 250;
+    --cl-info-dark: 37, 99, 235;
+    --cl-warn: 245, 158, 11;
+    --cl-warn-light: 252, 211, 77;
+    --cl-warn-dark: 217, 119, 6;
+    --cl-accent: 16, 185, 129;
+    --cl-accent-light: 52, 211, 153;
+    --cl-accent-dark: 5, 150, 105;
+    --cl-accent-contrast: 255, 255, 255;
+  }
+
   html {
     @apply scroll-smooth;
   }
 
   body {
-    @apply bg-neutral-900 text-sm font-normal leading-normal text-neutral-400 antialiased;
+    @apply bg-color-primary text-sm font-normal leading-normal text-color-secondary antialiased;
     font-family: "Inter", sans-serif;
   }
 

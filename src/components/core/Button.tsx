@@ -20,8 +20,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       asChild,
       icon,
       iconProps,
-      position = "left",
-      variant,
+      position = "start",
+      variant = "default",
       className,
       ...rest
     } = props;
@@ -31,13 +31,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Element
         ref={ref}
         className={mergeNames(
-          ButtonStyles({ variant, className }),
-          icon && position && ButtonStyles({ position })
+          ButtonStyles({ variant }),
+          icon && position && ButtonStyles({ position }),
+          icon && (!children || (Array.isArray(children) && !children.length))
+            ? "px-2"
+            : null,
+          className
         )}
         {...rest}
       >
         {icon && <Icon icon={icon} {...iconProps} />}
-        <span>{children}</span>
+        {children && <span>{children}</span>}
       </Element>
     );
   }
@@ -56,6 +60,7 @@ const ButtonStyles = cva(
     "justify-center",
     "px-2.5",
     "py-1.5",
+    "h-8",
     "rounded",
     "border",
     "border-transparent",
@@ -80,7 +85,7 @@ const ButtonStyles = cva(
         outline: [
           "border",
           "border-color-divider",
-          "bg-background",
+          "bg-transparent",
           "text-color-secondary",
           "hover:bg-color-primary-light",
           "hover:border-color-divider-dark",
@@ -105,12 +110,9 @@ const ButtonStyles = cva(
         ],
       },
       position: {
-        left: "flex-row",
-        right: "flex-row-reverse space-x-reverse",
+        start: ["flex-row", "space-x-1.5"],
+        end: ["flex-row-reverse", "space-x-reverse", "space-x-1.5"],
       },
-    },
-    defaultVariants: {
-      variant: "secondary",
     },
   }
 );

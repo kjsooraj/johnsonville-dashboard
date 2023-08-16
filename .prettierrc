@@ -16,6 +16,7 @@
     "^@/lib/(.*)$",
     "^@/hooks/(.*)$",
     "^@/pages/(.*)$",
+    "^@/redux/(.*)$",
     "^@/components/core/(.*)$",
     "^@/components/(.*)$",
     "^@/assets/(.*)$",

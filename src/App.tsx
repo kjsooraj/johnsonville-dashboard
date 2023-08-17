@@ -1,16 +1,28 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { supabase } from "@/lib/supabase";
+import { useAppDispatch } from "@/redux/store";
+import { setUser } from "@/redux/features/authSlice";
 import Error from "@/pages/Error";
 import Home from "@/pages/Home";
-import Auth from "./components/Auth";
 
 export default function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const subscribe = supabase.auth.onAuthStateChange(async (_e, session) => {
+      dispatch(setUser(session?.user ?? null));
+    });
+
+    return () => {
+      subscribe.data.subscription.unsubscribe();
+    };
+  }, [dispatch]);
+
   return (
-    <>
-      <Auth />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route index path="/" element={<Home />} />
+      <Route path="*" element={<Error />} />
+    </Routes>
   );
 }

@@ -6,7 +6,7 @@ export default function Auth() {
 
   return (
     <div>
-      <button onClick={() => dispatch(loginWithOAuth("github"))}>Login</button>
+      <button onClick={() => dispatch(loginWithOAuth("google"))}>Login</button>
       <button onClick={() => dispatch(logout())}>Logout</button>
     </div>
   );

@@ -80,7 +80,7 @@ const DrawerOverlay = React.forwardRef<
 
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
-const drawerStyles = cva(
+const DrawerStyles = cva(
   [
     "fixed",
     "z-50",
@@ -140,7 +140,7 @@ const drawerStyles = cva(
 
 interface DrawerContentProps
   extends React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>,
-    VariantProps<typeof drawerStyles> {}
+    VariantProps<typeof DrawerStyles> {}
 
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
@@ -153,7 +153,7 @@ const DrawerContent = React.forwardRef<
       <DrawerOverlay />
       <DrawerPrimitive.Content
         ref={ref}
-        className={mergeNames(drawerStyles({ side }), className)}
+        className={mergeNames(DrawerStyles({ side }), className)}
         {...rest}
       >
         {children}

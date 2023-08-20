@@ -38,5 +38,8 @@ export default {
       "color-accent-contr": "rgba(var(--cl-accent-contrast), <alpha-value>)",
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwind-scrollbar")({ nocompatible: true }),
+  ],
 };

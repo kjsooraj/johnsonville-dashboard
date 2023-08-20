@@ -3,7 +3,7 @@ import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import { cva, type VariantProps } from "class-variance-authority";
 import { mergeNames } from "@/lib/utils";
 
-const separatorStyles = cva("shrink-0 bg-color-divider", {
+const SeparatorStyles = cva("shrink-0 bg-color-divider", {
   variants: {
     orientation: {
       horizontal: "w-full h-px",
@@ -19,7 +19,7 @@ interface SeparatorOwnProps
 
 const Separator = React.forwardRef<
   React.ElementRef<typeof SeparatorPrimitive.Root>,
-  SeparatorOwnProps & VariantProps<typeof separatorStyles>
+  SeparatorOwnProps & VariantProps<typeof SeparatorStyles>
 >((props, ref) => {
   const {
     className,
@@ -33,7 +33,7 @@ const Separator = React.forwardRef<
       ref={ref}
       decorative={decorative}
       orientation={orientation}
-      className={mergeNames(separatorStyles({ orientation, className }))}
+      className={mergeNames(SeparatorStyles({ orientation, className }))}
       {...rest}
     />
   );

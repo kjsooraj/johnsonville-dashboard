@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useEffect } from "react";
 import { SupaUser } from "@/types/auth";
 import { supabase } from "@/lib/supabase";

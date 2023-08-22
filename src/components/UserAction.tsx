@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { login, logout } from "@/redux/features/authSlice";
@@ -22,26 +21,26 @@ export default function UserAction() {
           <Avatar.AvatarImage
             src={user.user_metadata.avatar_url}
             alt={user.user_metadata.email}
-          />
+          ></Avatar.AvatarImage>
           <Avatar.AvatarFallback>
             {user.user_metadata.name.slice(0, 1)}
           </Avatar.AvatarFallback>
         </Avatar.AvatarRoot>
       </Dropdown.DropdownTrigger>
-      <Dropdown.DropdownContent>
+      <Dropdown.DropdownContent side="top" sideOffset={12}>
         <Dropdown.DropdownLabel>
           {user.user_metadata.email}
         </Dropdown.DropdownLabel>
         <Dropdown.DropdownSeparator />
         <Dropdown.DropdownGroup>
           <Dropdown.DropdownItem asChild>
-            <Link to="settings" className="flex items-center space-x-2">
+            <Link to="settings" className="flex items-center space-x-4">
               <Icon icon="settings" className="h-4 w-4" />
               <span>Setting</span>
             </Link>
           </Dropdown.DropdownItem>
           <Dropdown.DropdownItem onClick={() => dispatch(logout())}>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-4">
               <Icon icon="logout" className="h-4 w-4" />
               <span>Logout</span>
             </div>

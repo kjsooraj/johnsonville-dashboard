@@ -6,7 +6,7 @@ import {
 } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import thunkMiddleware, { ThunkDispatch, ThunkMiddleware } from "redux-thunk";
-import authReducer from "@/redux/features/authSlice";
+import authReducer from "@/redux/auth.slice";
 
 export const store = configureStore({
   reducer: { auth: authReducer },

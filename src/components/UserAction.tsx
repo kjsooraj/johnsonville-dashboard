@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { mergeNames } from "@/lib/utils";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { login, logout } from "@/redux/features/authSlice";
+import { login, logout } from "@/redux/auth.slice";
 import * as Avatar from "@/components/core/Avatar";
 import { Button } from "@/components/core/Button";
 import * as Dropdown from "@/components/core/Dropdown";

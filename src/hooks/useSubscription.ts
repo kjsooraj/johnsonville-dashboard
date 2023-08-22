@@ -1,9 +1,8 @@
-/* eslint-disable no-console */
 import { useEffect } from "react";
 import { SupaUser } from "@/types/auth";
 import { supabase } from "@/lib/supabase";
 import { useAppDispatch } from "@/redux/store";
-import { setSession, setUser } from "@/redux/features/authSlice";
+import { setSession, setUser } from "@/redux/auth.slice";
 
 export default function useSubscription() {
   const dispatch = useAppDispatch();

@@ -107,15 +107,14 @@ const DropdownContent = React.forwardRef<
         className={mergeNames(
           [
             "bg-color-popover",
-            "text-popover-foreground",
+            "text-color-secondary",
             "z-50",
             "min-w-[8rem]",
             "overflow-hidden",
             "rounded-md",
             "border",
             "border-color-divider",
-            "p-1",
-            "shadow-md",
+            "shadow-sm",
             "data-[state=open]:animate-in",
             "data-[state=closed]:animate-out",
             "data-[state=closed]:fade-out-0",
@@ -158,9 +157,10 @@ const DropdownItem = React.forwardRef<
           "select-none",
           "items-center",
           "rounded-sm",
-          "px-2",
-          "py-1.5",
+          "px-4",
+          "py-2.5",
           "text-sm",
+          "font-medium",
           "outline-none",
           "transition-colors",
           "data-[disabled]:pointer-events-none",
@@ -277,10 +277,9 @@ const DropdownLabel = React.forwardRef<
     <DropdownPrimitive.Label
       ref={ref}
       className={mergeNames(
-        "px-2",
-        "py-1.5",
+        "px-4",
+        "py-2",
         "text-sm",
-        "font-semibold",
         inset && "pl-8",
         className
       )}

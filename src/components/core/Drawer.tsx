@@ -24,13 +24,9 @@ const DrawerClose = React.forwardRef<
           "top-4",
           "rounded-sm",
           "opacity-70",
-          "ring-offset-background",
           "transition-opacity",
           "hover:opacity-100",
           "focus:outline-none",
-          "focus:ring-2",
-          "focus:ring-ring",
-          "focus:ring-offset-2",
           "disabled:pointer-events-none",
           "data-[state=open]:bg-secondary",
         ],
@@ -67,7 +63,7 @@ const DrawerOverlay = React.forwardRef<
           "fixed",
           "inset-0",
           "z-50",
-          "bg-neutral-800/5",
+          "bg-color-primary/20",
           "backdrop-blur-sm",
           "data-[state=open]:animate-in",
           "data-[state=closed]:animate-out",
@@ -84,13 +80,14 @@ const DrawerOverlay = React.forwardRef<
 
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
-const drawerStyles = cva(
+const DrawerStyles = cva(
   [
     "fixed",
     "z-50",
     "gap-4",
-    "bg-neutral-900",
-    "p-6",
+    "px-4",
+    "py-4",
+    "bg-color-primary",
     "shadow-lg",
     "transition",
     "ease-in-out",
@@ -120,23 +117,21 @@ const drawerStyles = cva(
           "inset-y-0",
           "left-0",
           "h-full",
-          "w-3/4",
+          "w-full",
           "border-r",
-          "border-r-neutral-800",
+          "border-r-color-divider-dark",
           "data-[state=closed]:slide-out-to-left",
           "data-[state=open]:slide-in-from-left",
-          "sm:max-w-xs",
         ],
         right: [
           "inset-y-0",
           "right-0",
           "h-full",
-          "w-3/4",
+          "w-full",
           "border-l",
-          "border-l-neutral-800",
+          "border-l-color-divider-dark",
           "data-[state=closed]:slide-out-to-right",
           "data-[state=open]:slide-in-from-right",
-          "sm:max-w-xs",
         ],
       },
     },
@@ -145,7 +140,7 @@ const drawerStyles = cva(
 
 interface DrawerContentProps
   extends React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>,
-    VariantProps<typeof drawerStyles> {}
+    VariantProps<typeof DrawerStyles> {}
 
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
@@ -158,7 +153,7 @@ const DrawerContent = React.forwardRef<
       <DrawerOverlay />
       <DrawerPrimitive.Content
         ref={ref}
-        className={mergeNames(drawerStyles({ side }), className)}
+        className={mergeNames(DrawerStyles({ side }), className)}
         {...rest}
       >
         {children}

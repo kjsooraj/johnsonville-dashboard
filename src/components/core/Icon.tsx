@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import * as VisuallyHiddenPrimitive from "@radix-ui/react-visually-hidden";
 import { icons } from "@/constants/icons";
 
-interface IconProps extends React.SVGAttributes<SVGSVGElement> {
+export interface IconProps extends React.SVGAttributes<SVGSVGElement> {
   icon: keyof typeof icons;
   label?: string;
 }
@@ -14,7 +14,7 @@ const Icon = forwardRef<SVGSVGElement, IconProps>((props, ref) => {
 
   return (
     <React.Fragment>
-      <IconEle ref={ref} {...rest} />
+      <IconEle ref={ref} width={16} height={16} {...rest} />
       {label && (
         <VisuallyHiddenPrimitive.Root>{label}</VisuallyHiddenPrimitive.Root>
       )}

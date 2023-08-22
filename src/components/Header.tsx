@@ -1,25 +1,20 @@
-import { Button } from "@/components/core/Button";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/core/Drawer";
+import { Link } from "react-router-dom";
 import { Icon } from "@/components/core/Icon";
-import Guide from "@/components/Guide";
+import UserAction from "@/components/UserAction";
 
 export default function Header() {
   return (
-    <header className="h-auto w-full border-b border-b-neutral-800 bg-neutral-900">
+    <header className="h-auto w-full bg-color-primary">
       <div className="container px-4">
         <div className="relative flex h-14 w-full items-center">
-          <div className="flex items-center space-x-4">
-            <Drawer>
-              <DrawerTrigger asChild>
-                <Button size="icon" className="bg-neutral-800">
-                  <Icon icon="menu" width={16} height={16} />
-                  <span className="sr-only">Menu</span>
-                </Button>
-              </DrawerTrigger>
-              <DrawerContent side="left">
-                <Guide />
-              </DrawerContent>
-            </Drawer>
+          <div className="flex flex-1 items-center justify-start">
+            <Link to="/" className="cursor-pointer select-none">
+              <Icon icon="unnamed" label="unnamed.co" className="h-9 w-9" />
+            </Link>
+          </div>
+          <div className="hidden flex-1 items-center justify-center md:flex"></div>
+          <div className="flex flex-1 items-center justify-end">
+            <UserAction />
           </div>
         </div>
       </div>
